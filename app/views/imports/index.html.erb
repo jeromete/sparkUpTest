@@ -1,1 +1,9 @@
-<h1>import index</h1>
+<h2>Importer les utilsiateurs</h2>
+<%= form_tag import_imports_path, multipart: true do %>
+  <div class="form-group">
+    <label for="input-file">Fichier à importer</label>
+    <%= file_field_tag :file, required: true, id: 'input-file', accept: '.xlsx' %>
+    <p class="help-block">Utiliser un fichier xlsx</p>
+  </div>
+  <%= submit_tag 'Importer', class: 'btn btn-primary' %>
+<% end %>

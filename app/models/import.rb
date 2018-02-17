@@ -47,9 +47,7 @@ class Import < ApplicationRecord
       else
         good_users.push(user)
       end
-      if !error
-        user.save
-      end
+      user.save
     end
     users.push(good_users).push(bad_users)
   end

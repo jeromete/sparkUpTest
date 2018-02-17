@@ -10,8 +10,8 @@ class Import < ApplicationRecord
       user = User.new
       user.first_name = row["first_name"].capitalize
       user.last_name = row["last_name"].capitalize
-      user.error_message = ''
       user.email = row["email"]
+      user.error_message = ''
       error = false
       if User.where(email: user.email).count > 0
         error = true
@@ -33,6 +33,14 @@ class Import < ApplicationRecord
         #if user.email =~ /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
         error = true
         user.add_error('Email non conforme')
+      end
+      if !(/^[[:alpha:]\s'"\-_&@!?()\[\]-]*$/u =~ user.first_name)
+        error = true
+        user.add_error('Prénom non valide')
+      end
+      if !(/^[[:alpha:]\s'"\-_&@!?()\[\]-]*$/u =~ user.last_name)
+        error = true
+        user.add_error('Nom non valide')
       end
       if error
         bad_users.push(user)

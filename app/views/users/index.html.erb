@@ -1,0 +1,37 @@
+<h1>Utilisateurs</h1>
+<h3>Sans erreur</h3>
+<table class="table table-striped">
+  <tr>
+    <th>Prénom</th>
+    <th>Nom</th>
+    <th>Email</th>
+    <th>Date d'ajout</th>
+  </tr>
+  <% @good_users.each do |user| %>
+    <tr>
+      <td><%= user.first_name %></td>
+      <td><%= user.last_name %></td>
+      <td><%= user.email %></td>
+      <td><%= user.created_at.to_time.strftime('%m/%d/%Y %H:%M') %></td>
+    </tr>
+  <% end %>
+</table>
+<h3>Avec erreur(s)</h3>
+<table class="table table-striped">
+  <tr>
+    <th>Prénom</th>
+    <th>Npm</th>
+    <th>Email</th>
+    <th>Erreur(s)</th>
+    <th>Date d'ajout</th>
+  </tr>
+  <% @bad_users.each do |user| %>
+    <tr>
+      <td><%= user.first_name %></td>
+      <td><%= user.last_name %></td>
+      <td><%= user.email %></td>
+      <td><%= user.error_message %></td>
+      <td><%= user.created_at.to_time.strftime('%m/%d/%Y %H:%M') %></td>
+    </tr>
+  <% end %>
+</table>

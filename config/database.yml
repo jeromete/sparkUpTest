@@ -14,7 +14,7 @@ default: &default
   encoding: utf8
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: root
-  password:
+  password: root
   socket: /var/run/mysqld/mysqld.sock
 
 development:
@@ -44,11 +44,5 @@ test:
 #
 # You can use this database configuration with:
 #
-#   production:
-#     url: <%= ENV['DATABASE_URL'] %>
-#
 production:
-  <<: *default
-  database: SparkUpTest_production
-  username: SparkUpTest
-  password: <%= ENV['SPARKUPTEST_DATABASE_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL'] %>
